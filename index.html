@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Petits Plats</title>
+    <script src="https://kit.fontawesome.com/a18b407708.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-neutral-200">
+    <header class="flex justify-center items-center relative h-screen w-full overflow-hidden">
+        <img src="./src/images/BackgroundImage.webp" alt="background pokebowl"
+            class="absolute h-full w-full object-cover z-0">
+
+        <img src="./src/images/Logo.webp" alt="Logo Les Petits Plats" class="absolute top-1 left-1 p-4">
+        <div class="header-container z-10 w-full flex flex-col items-center">
+            <span
+                class="hook font-normal text-[44px] leading-[66px] self-center text-custom-yellow font-anton max-lg:text-center">
+                CHERCHEZ
+                PARMI
+                PLUS DE 1500 RECETTES
+            </span>
+            <span
+                class="hook font-normal text-[44px] leading-[66px] self-center text-custom-yellow font-anton mb-5 max-lg:text-center">DU
+                QUOTIDIEN, SIMPLES ET
+                DÉLICIEUSES</span>
+            <div class="container-research w-[60%] flex items-center relative">
+                <input id="search-input" type="text" pattern="[A-Za-zÀ-ÿ ]*"
+                    placeholder="Rechercher une recette, un ingrédient, ..."
+                    class="bg-white rounded-md border-0 p-4 w-full">
+                <i class="fa-solid fa-xmark hidden clear-search absolute right-14 text-custom-gray-icon p-3"
+                    aria-label="Effacer la recherche"></i>
+                <i class="fa-solid fa-magnifying-glass absolute right-1 bg-custom-gray p-4 rounded-md text-white"
+                    aria-label="Lancer la recherche"></i>
+            </div>
+        </div>
+    </header>
+    <main class="flex flex-col max-w-[1236px] m-auto">
+        <!--filters selectors + number of recipes displayed-->
+        <section id="filters-container"
+            class="filters-container flex flex-row justify-between items-center mt-5 mb-4 font-manrope max-lg:mx-4">
+            <div class="filters flex flex-row flex-wrap">
+                <!--dropdown ingredients-->
+                <div
+                    class="full-dropdown flex flex-col items-center w-[195px] rounded-xl bg-white max-h-[324px] relative mr-16 max-lg:mb-3">
+                    <div
+                        class="dropdown dropdown-ingredients p-4 w-full flex justify-between items-center cursor-pointer">
+                        <span class="font-medium">Ingrédients</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div
+                        class="dropdown-content hidden overflow-y-auto absolute w-full bg-white shadow-lg rounded-b-xl z-50 mt-14 max-h-[268px]">
+                        <div class="w-full flex items-center justify-center p-2">
+                            <input type="text" id="ingredient-filter-input" pattern="[A-Za-zÀ-ÿ ]*"
+                                class="w-full border border-light-gray rounded relative">
+                            <i class="fa-solid fa-xmark absolute hidden input-ingredient-remove-text right-9"></i>
+                            <i class="fa-solid fa-magnifying-glass absolute right-4"></i>
+                        </div>
+                        <ul id="selected-ingredients" class="selected-filters-list mb-2"></ul>
+                        <ul id="ingredient-list" class="filter-list pb-2"></ul>
+                    </div>
+                </div>
+                <!--dropdown appliances-->
+                <div
+                    class="full-dropdown flex flex-col items-center w-[195px] rounded-xl bg-white max-h-[324px] relative mr-16 max-lg:mb-3">
+                    <div
+                        class="dropdown dropdown-ingredients p-4 w-full flex justify-between items-center cursor-pointer">
+                        <span class="font-medium">Appareils</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div
+                        class="dropdown-content hidden overflow-y-auto absolute w-full bg-white shadow-lg rounded-b-xl z-50 mt-14 max-h-[268px]">
+                        <div class="w-full flex items-center justify-center p-2">
+                            <input type="text" id="appliance-filter-input" pattern="[A-Za-zÀ-ÿ ]*"
+                                class="w-full border border-light-gray rounded relative">
+                            <i class="fa-solid fa-xmark hidden absolute input-appliance-remove-text right-9"></i>
+                            <i class="fa-solid fa-magnifying-glass absolute right-4"></i>
+                        </div>
+                        <ul id="selected-appliances" class="selected-filters-list mb-2"></ul>
+                        <ul id="appliance-list" class="filter-list pb-2"></ul>
+                    </div>
+                </div>
+                <!--dropdown utensils-->
+                <div
+                    class="full-dropdown flex flex-col items-center w-[195px] rounded-xl bg-white max-h-[324px] relative mr-16 max-lg:mb-3">
+                    <div
+                        class="dropdown dropdown-ingredients p-4 w-full flex justify-between items-center cursor-pointer">
+                        <span class="font-medium">Ustensiles</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div
+                        class="dropdown-content hidden overflow-y-auto absolute w-full bg-white shadow-lg rounded-b-xl z-50 mt-14 max-h-[268px]">
+                        <div class="w-full flex items-center justify-center p-2">
+                            <input type="text" id="utensil-filter-input" pattern="[A-Za-zÀ-ÿ ]*"
+                                class="w-full border border-light-gray rounded relative">
+                            <i class="fa-solid fa-xmark hidden absolute input-utensil-remove-text right-9"></i>
+                            <i class="fa-solid fa-magnifying-glass absolute right-4"></i>
+                        </div>
+                        <ul id="selected-utensils" class="selected-filters-list mb-2"></ul>
+                        <ul id="utensil-list" class="filter-list pb-2"></ul>
+                    </div>
+                </div>
+            </div>
+            <span id="recipes-number" class="font-anton font-bold"></span>
+        </section>
+        <!--selected filters-->
+        <ul id="selected-filters"
+            class="selected-filters flex flex-row mb-8 font-manrope flex-wrap max-lg:gap-y-3 max-lg:mx-3">
+        </ul>
+        <!--recipes container for displaying cards-->
+        <section id="recipes-container"
+            class=" flex flex-row flex-wrap gap-x-[8%] max-lg:justify-around max-lg:gap-x-0">
+        </section>
+
+    </main>
+    <script src="./src/js/main.js" type="module" defer></script>
+</body>
+
+</html>
