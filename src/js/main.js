@@ -2,7 +2,7 @@ import { displayRecipeCards } from './displayRecipeCards.js';
 import { generateFilters, updateSelectedFiltersDisplay } from './generateFilters.js';
 import { recipes as initialRecipesData } from '../data/recipes.js';
 import { selectedIngredients, selectedAppliances, selectedUtensils } from './filterSelections.js';
-import './dropdownTriggers.js';
+import './utils.js';
 import { displayClearButton, updateRecipeCounter } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         const searchText = searchInput.value.toLowerCase();
+        console.log(selectedAppliances, selectedIngredients, selectedUtensils);
 
         const filteredRecipes = initialRecipesData.filter(recipe => {
             const matchesSearch = searchText.length < 3 ||
@@ -36,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSelectedFiltersDisplay(selectedIngredients, selectedAppliances, selectedUtensils, applyFilters);
     }
     searchInput.addEventListener("input", applyFilters);
+    displayClearButton(applyFilters);
+
     displayRecipeCards(initialRecipesData);
     generateFilters(initialRecipesData, applyFilters);
-    displayClearButton(applyFilters);
     updateRecipeCounter(initialRecipesData);
-
 });

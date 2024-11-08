@@ -1,7 +1,7 @@
 function createRecipeCard(recipe) {
     return `
         <article class="bg-white rounded-[21px] shadow-[0px_4px_34px_30px_rgba(0,0,0,0.04)] overflow-hidden recipe-container mb-[3rem] relative w-[28%] max-lg:w-[40%]">
-            <img src="./src/images/${recipe.image}" alt="Image de ${recipe.name}" class="object-cover h-[253px] w-full rounded-t-[20px]">
+            <img src="./src/images/${recipe.image.replace('.jpg', '.webp')}" alt="Image de ${recipe.name}" class="object-cover h-[253px] w-full rounded-t-[20px]">
             <div class="px-[6.5%] container-card-text min-h-[478px]">
                 <h2 class="text-lg font-anton py-[21px] pb-[29px] text-black">${recipe.name}</h2>
 
