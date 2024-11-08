@@ -36,7 +36,12 @@ function createRecipeCard(recipe) {
     `;
 }
 
-export function displayRecipeCards(recipes) {
+export function displayRecipeCards(recipes, searchValue) {
     const container = document.getElementById('recipes-container');
-    container.innerHTML = recipes.map(recipe => createRecipeCard(recipe)).join('');
-}
+    if (recipes.length === 0) {
+        const noResultMsg = `Aucune recette ne contient  "${searchValue}".`;
+        container.innerHTML = `<div class="no-results flex items-center justify-center w-full h-40">${noResultMsg}</div>`;
+    } else {
+        container.innerHTML = recipes.map(recipe => createRecipeCard(recipe)).join('');
+    }
+} 

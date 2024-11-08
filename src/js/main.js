@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return matchesSearch && matchesIngredients && matchesAppliance && matchesUtensils;
         });
 
-        displayRecipeCards(filteredRecipes);
+        displayRecipeCards(filteredRecipes, searchText);
         updateRecipeCounter(filteredRecipes);
         generateFilters(filteredRecipes, applyFilters);
         updateSelectedFiltersDisplay(selectedIngredients, selectedAppliances, selectedUtensils, applyFilters);
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener("input", applyFilters);
     displayClearButton(applyFilters);
 
-    displayRecipeCards(initialRecipesData);
+    displayRecipeCards(initialRecipesData, "");
     generateFilters(initialRecipesData, applyFilters);
     updateRecipeCounter(initialRecipesData);
 });
