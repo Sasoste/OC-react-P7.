@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         const searchText = searchInput.value.toLowerCase();
-        console.log('1', searchText);
         const filteredRecipes = [];
-        console.log('2', searchText);
         for (const recipe of initialRecipesData) {
             let matchesSearch = searchText.length < 3 ||
                 recipe.name.toLowerCase().includes(searchText) ||
@@ -60,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 filteredRecipes.push(recipe);
             }
         }
-        console.log('3', searchText);
         displayRecipeCards(filteredRecipes, searchText);
         updateRecipeCounter(filteredRecipes);
         generateFilters(filteredRecipes, applyFilters);
