@@ -13,23 +13,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyFilters() {
         const searchText = searchInput.value.toLowerCase();
-        console.log(selectedAppliances, selectedIngredients, selectedUtensils);
-
-        const filteredRecipes = initialRecipesData.filter(recipe => {
-            const matchesSearch = searchText.length < 3 ||
+        const filteredRecipes = [];
+        for (const recipe of initialRecipesData) {
+            let matchesSearch = searchText.length < 3 ||
                 recipe.name.toLowerCase().includes(searchText) ||
-                recipe.description.toLowerCase().includes(searchText) ||
-                recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(searchText));
+                recipe.description.toLowerCase().includes(searchText);
 
-            const matchesIngredients = Array.from(selectedIngredients).every(ingredient =>
-                recipe.ingredients.some(i => i.ingredient.toLowerCase() === ingredient.toLowerCase())
-            );
+            if (!matchesSearch) {
+                for (const ingredient of recipe.ingredients) {
+                    if (ingredient.ingredient.toLowerCase().includes(searchText)) {
+                        matchesSearch = true;
+                        break;
+                    }
+                }
+            }
+
+            let matchesIngredients = true;
+            for (const ingredient of selectedIngredients) {
+                let found = false;
+                for (const i of recipe.ingredients) {
+                    if (i.ingredient.toLowerCase() === ingredient.toLowerCase()) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    matchesIngredients = false;
+                    break;
+                }
+            }
+
             const matchesAppliance = selectedAppliances.size === 0 || selectedAppliances.has(recipe.appliance.toLowerCase());
-            const matchesUtensils = Array.from(selectedUtensils).every(utensil =>
-                recipe.ustensils.map(u => u.toLowerCase()).includes(utensil.toLowerCase())
-            );
-            return matchesSearch && matchesIngredients && matchesAppliance && matchesUtensils;
-        });
+
+            let matchesUtensils = true;
+            for (const utensil of selectedUtensils) {
+                let found = recipe.ustensils.map(u => u.toLowerCase()).includes(utensil.toLowerCase());
+                if (!found) {
+                    matchesUtensils = false;
+                    break;
+                }
+            }
+
+            if (matchesSearch && matchesIngredients && matchesAppliance && matchesUtensils) {
+                filteredRecipes.push(recipe);
+            }
+        }
 
         displayRecipeCards(filteredRecipes);
         updateRecipeCounter(filteredRecipes);
