@@ -47,7 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let matchesUtensils = true;
             for (const utensil of selectedUtensils) {
-                let found = recipe.ustensils.map(u => u.toLowerCase()).includes(utensil.toLowerCase());
+                let found = false;
+                for (const u of recipe.ustensils) {
+                    if (u.toLowerCase() === utensil.toLowerCase()) {
+                        found = true;
+                        break;
+                    }
+                }
                 if (!found) {
                     matchesUtensils = false;
                     break;

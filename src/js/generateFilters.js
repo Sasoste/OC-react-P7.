@@ -69,34 +69,28 @@ export function generateFilters(recipes, applyFilters) {
 
 
 export function updateSelectedFiltersDisplay(selectedIngredients, selectedAppliances, selectedUtensils, applyFilters) {
-
     const globalSelectedFiltersContainer = document.querySelector('.selected-filters');
     const selectedIngredientsContainer = document.getElementById('selected-ingredients');
     const selectedAppliancesContainer = document.getElementById('selected-appliances');
     const selectedUtensilsContainer = document.getElementById('selected-utensils');
-
     globalSelectedFiltersContainer.innerHTML = "";
     selectedIngredientsContainer.innerHTML = "";
     selectedAppliancesContainer.innerHTML = "";
     selectedUtensilsContainer.innerHTML = "";
 
     const createTagElement = (item, set, container, globalContainer) => {
-        let containerLiHTML;
-        let globalLiHTML;
-
-        globalLiHTML = `
-            <li class="p-4 mr-2 rounded-lg bg-yellow-400 cursor-pointer font-manrope flex items-center justify-between">
-                ${capitalizeFirstLetter(item)}
-                <i class="fa-solid fa-x pl-4"></i> 
-            </li>
-        `;
-        containerLiHTML = `
+        let containerLiHTML = `
             <li class="p-2 cursor-pointer font-manrope bg-yellow-400 flex items-center justify-between group hover:font-bold">
                 ${capitalizeFirstLetter(item)}
                 <i class="fa-solid fa-circle-xmark hidden group-hover:inline"></i>
             </li>
         `;
-
+        let globalLiHTML = `
+            <li class="p-4 mr-2 rounded-lg bg-yellow-400 cursor-pointer font-manrope flex items-center justify-between">
+                ${capitalizeFirstLetter(item)}
+                <i class="fa-solid fa-x pl-4"></i> 
+            </li>
+        `;
 
         const globalLiElement = document.createElement('div');
         globalLiElement.innerHTML = globalLiHTML.trim();
