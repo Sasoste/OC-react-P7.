@@ -34,16 +34,14 @@
                 <input id="search-input" type="text" pattern="[A-Za-zÀ-ÿ ]*"
                     placeholder="Rechercher une recette, un ingrédient, ..."
                     class="bg-white rounded-md border-0 p-4 w-full">
-                <i class="fa-solid fa-xmark hidden clear-search absolute right-14 text-custom-gray-icon p-3"
-                    aria-label="Effacer la recherche"></i>
-                <i class="fa-solid fa-magnifying-glass absolute right-1 bg-custom-gray p-4 rounded-md text-white"
-                    aria-label="Lancer la recherche"></i>
+                <i class="fa-solid fa-xmark hidden clear-search absolute right-14 text-custom-gray-icon p-3"></i>
+                <i class="fa-solid fa-magnifying-glass absolute right-1 bg-custom-gray p-4 rounded-md text-white"></i>
             </div>
         </div>
     </header>
     <main class="flex flex-col max-w-[1236px] m-auto">
         <!--filters selectors + number of recipes displayed-->
-        <section id="filters-container"
+        <div id="filters-container"
             class="filters-container flex flex-row justify-between items-center mt-5 mb-4 font-manrope max-lg:mx-4">
             <div class="filters flex flex-row flex-wrap">
                 <!--dropdown ingredients-->
@@ -108,15 +106,14 @@
                 </div>
             </div>
             <span id="recipes-number" class="font-anton font-bold"></span>
-        </section>
+        </div>
         <!--selected filters-->
         <ul id="selected-filters"
             class="selected-filters flex flex-row mb-8 font-manrope flex-wrap max-lg:gap-y-3 max-lg:mx-3">
         </ul>
         <!--recipes container for displaying cards-->
-        <section id="recipes-container"
-            class=" flex flex-row flex-wrap gap-x-[8%] max-lg:justify-around max-lg:gap-x-0">
-        </section>
+        <div id="recipes-container" class=" flex flex-row flex-wrap gap-x-[8%] max-lg:justify-around max-lg:gap-x-0">
+        </div>
 
     </main>
     <script src="./src/js/main.js" type="module" defer></script>
