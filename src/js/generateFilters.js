@@ -27,7 +27,7 @@ export function generateFilters(recipes, applyFilters) {
                     } else {
                         set.add(item);
                     }
-                    applyFilters(false);
+                    applyFilters();
                 });
 
                 listElement.appendChild(li);

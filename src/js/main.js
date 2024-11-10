@@ -8,7 +8,7 @@ import { displayClearButton, updateRecipeCounter } from './utils.js';
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("input", () => {
-        applyFilters(false);
+        applyFilters();
     });
 
     function applyFilters() {
